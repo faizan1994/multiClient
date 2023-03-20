@@ -1,0 +1,10 @@
+<p>client-form works!</p>
+<form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+    <ng-container formArrayName="clientNames" *ngFor="let client of clientNames.controls; index as i">
+        <ng-container [formGroupName]="i">
+          <input formControlName="clientName">
+          <div *ngIf="showDelete"><button (click)="removeField(i)"><span>x</span></button></div>
+        </ng-container>
+      </ng-container>
+    <button type="submit" [disabled]="!clientForm.valid">Add Client</button>
+</form>
